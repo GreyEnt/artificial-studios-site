@@ -1,0 +1,8 @@
+# Netlify-style redirects — only used if this ends up hosted on Netlify.
+# (Apache/cPanel hosts use .htaccess instead; this file is harmless either way.)
+/film-gallery      /#work       301
+/photo-gallery     /#work       301
+/services          /#services   301
+/artificial-academy /#academy   301
+/team              /#studio     301
+/contact           /#contact    301

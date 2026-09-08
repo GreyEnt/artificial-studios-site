@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artificial Studios — The VFX house built on AI</title>
+<meta name="description" content="AI-native film and VFX studio led by Emmy-winning creative director Duncan Thomsen. Commercials, trailers, series and features delivered in days not months.">
+<link rel="canonical" href="https://artificialstudios.co.uk/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artificial Studios">
+<meta property="og:title" content="Artificial Studios — The VFX house built on AI">
+<meta property="og:description" content="AI-native film and VFX studio led by Emmy-winning creative director Duncan Thomsen. Commercials, trailers, series and features delivered in days not months.">
+<meta property="og:url" content="https://artificialstudios.co.uk/">
+<meta property="og:image" content="https://artificialstudios.co.uk/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Duncan Thomsen, founder and creative director of Artificial Studios">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Artificial Studios — The VFX house built on AI">
+<meta name="twitter:description" content="AI-native film and VFX studio led by Emmy-winning creative director Duncan Thomsen. Commercials, trailers, series and features delivered in days not months.">
+<meta name="twitter:image" content="https://artificialstudios.co.uk/assets/img/og-image.jpg">
+
+<!-- Icons — see README for how these were generated from design/mark.svg -->
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Artificial Studios",
+  "url": "https://artificialstudios.co.uk/",
+  "description": "AI-native film and VFX studio led by Emmy-winning creative director Duncan Thomsen. Commercials, trailers, series and features delivered in days not months.",
+  "logo": "https://artificialstudios.co.uk/assets/img/favicon-96x96.png",
+  "email": "info@artificialstudios.co.uk",
+  "telephone": "+447983606196",
+  "address": { "@type": "PostalAddress", "addressLocality": "Brighton", "addressCountry": "GB" },
+  "sameAs": ["https://www.planetspectrum.tv/"],
+  "founder": {
+    "@type": "Person",
+    "name": "Duncan Thomsen",
+    "jobTitle": "Creative Director & Founder",
+    "award": "Emmy Award — The Ascent of Money"
+  }
+}
+</script>
+
+<style>
+:root{
+  --black:#000;
+  --bone:#ECE8E1;
+  --ash:#8C8A85;
+  --graphite:#1C1C1B;
+  --line:#262624;
+  --tungsten:#E9A23B;
+  --gutter:clamp(20px,4vw,64px);
+  --max:1520px;
+  --bar:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--black);color:var(--bone);font-family:"Archivo",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{line-height:1.5;font-size:17px}
+a{color:inherit;text-decoration:none}
+img,video,svg{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit;background:none;border:0}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--tungsten);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+/* type scale */
+.d1{font-weight:600;font-stretch:112%;font-size:clamp(34px,5vw,84px);line-height:.98;letter-spacing:-.02em}
+.d2{font-weight:600;font-stretch:112%;font-size:clamp(28px,3.4vw,54px);line-height:1.02;letter-spacing:-.015em}
+.d3{font-weight:600;font-stretch:112%;font-size:clamp(22px,2vw,30px);line-height:1.1;letter-spacing:-.01em}
+.lede{font-size:clamp(18px,1.5vw,22px);line-height:1.4;max-width:34em;color:var(--bone)}
+.meta{font-stretch:80%;font-weight:500;font-size:14px;color:var(--ash);letter-spacing:.01em}
+p{max-width:38em}
+
+/* header — the top letterbox bar */
+.top{position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:20;background:var(--black);display:flex;align-items:center}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:22px;height:20px}
+.brand span{font-weight:700;font-stretch:118%;font-size:15px;letter-spacing:.04em}
+.nav{display:flex;align-items:center;gap:34px}
+.nav a{font-size:15px;font-weight:500;color:var(--ash);transition:color .15s}
+.nav a:hover{color:var(--bone)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid var(--bone);border-radius:2px;font-weight:600;font-size:15px;line-height:1;transition:background .15s,color .15s}
+.btn:hover{background:var(--bone);color:var(--black)}
+.btn.solid{background:var(--bone);color:var(--black)}
+.btn.solid:hover{background:var(--tungsten);border-color:var(--tungsten)}
+.menu-btn{display:none;font-weight:600;font-size:15px}
+.drawer{display:none;position:fixed;inset:var(--bar) 0 0 0;background:var(--black);z-index:19;padding:32px var(--gutter)}
+.drawer a{display:block;font-size:34px;font-weight:600;font-stretch:112%;padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer.open{display:block}
+
+/* hero — the reel sits in a letterbox */
+.hero{min-height:100svh;display:flex;flex-direction:column;padding-top:var(--bar)}
+.frame{flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:0 var(--gutter)}
+.reel{position:relative;width:100%;max-width:var(--max);aspect-ratio:16/9;background:var(--graphite);overflow:hidden}
+.reel.portrait{width:auto;max-width:100%;height:min(76svh,760px)}
+.reel video{width:100%;height:100%;object-fit:contain}
+.reel .logo-intro{position:absolute;inset:0;z-index:3;transition:opacity .6s ease}
+.reel .logo-intro.hide{opacity:0;pointer-events:none}
+.reel::before,.reel::after{content:"";position:absolute;left:0;right:0;height:50%;background:var(--black);z-index:2;transform:scaleY(0)}
+.reel::before{top:0;transform-origin:top}
+.reel::after{bottom:0;transform-origin:bottom}
+.reel .live{position:absolute;left:18px;top:16px;z-index:3;display:flex;align-items:center;gap:8px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.08em;color:var(--bone);opacity:.9}
+.reel .live i{width:8px;height:8px;border-radius:50%;background:var(--tungsten)}
+.reel .sound{position:absolute;right:16px;bottom:14px;z-index:3;padding:8px 12px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.06em;background:rgba(0,0,0,.55);color:var(--bone);border-radius:2px}
+.reel .reel-cap{position:absolute;left:18px;bottom:14px;z-index:3;max-width:min(70%,520px);display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:rgba(0,0,0,.55);border-radius:2px;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+.reel .reel-cap.show{opacity:1;transform:translateY(0)}
+.reel .reel-cap b{font-size:16px;font-weight:600}
+.reel .reel-cap small{display:block;color:var(--ash);font-size:13px;font-stretch:90%;margin-top:2px}
+.reel .reel-cap button{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--bone);border:1px solid rgba(236,232,225,.4);border-radius:2px;transition:background .15s,border-color .15s}
+.reel .reel-cap button:hover{background:var(--bone);color:var(--black);border-color:var(--bone)}
+.reel .reel-cap button::after{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.hero-foot{padding:36px var(--gutter) 40px}
+.hero-foot .wrap{padding:0;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+.hero-foot h1{max-width:12em}
+.hero-foot .side{display:flex;flex-direction:column;gap:20px;justify-self:end;max-width:30em}
+.hero-foot .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+@media(prefers-reduced-motion:no-preference){
+  .reel::before,.reel::after{transform:scaleY(1);animation:shutter 1.1s cubic-bezier(.7,0,.2,1) .35s forwards}
+  @keyframes shutter{to{transform:scaleY(0)}}
+  .hero-foot .wrap{opacity:0;animation:rise .8s ease 1.05s forwards}
+  @keyframes rise{to{opacity:1}}
+}
+
+/* sections */
+section{padding:clamp(72px,9vw,140px) 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(36px,4vw,64px)}
+.sec-head p{color:var(--ash);font-size:18px;justify-self:end}
+.rule{border-top:1px solid var(--line)}
+
+/* client strip */
+.clients{padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.clients .wrap{display:flex;align-items:center;gap:clamp(24px,4vw,64px);flex-wrap:wrap}
+.clients .who{font-stretch:80%;font-weight:500;font-size:14px;color:var(--ash);margin-right:auto}
+.clients .logo{font-weight:700;font-stretch:118%;font-size:15px;letter-spacing:.06em;color:#57554F}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:28px}
+.filters button{padding:6px 0;font-size:15px;font-weight:500;color:var(--ash);border-bottom:1px solid transparent}
+.filters button:hover{color:var(--bone)}
+.filters button[aria-pressed="true"]{color:var(--bone);border-bottom-color:var(--tungsten)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:14px}
+.tile{position:relative;aspect-ratio:16/9;background:var(--graphite);overflow:hidden;border-radius:2px}
+.tile.wide{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.tile.vertical{grid-row:span 3;aspect-ratio:auto}
+/* cinema — a real cinemascope-shaped clip (creature-vfx-test is 1280x542) gets its own
+   short-and-wide cell instead of letterboxing thin inside a plain 16:9 tile */
+.tile.cinema{grid-column:span 2;aspect-ratio:1280/542}
+.tile.hidden{display:none}
+.tile .art{position:absolute;inset:0;background-size:cover;background-position:center}
+.tile .art video{width:100%;height:100%;object-fit:cover}
+.tile .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.82) 100%)}
+/* self-hosted clips — poster underneath, video fades in on hover/tap */
+.tile .media{position:absolute;inset:0}
+.tile .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.82) 100%);z-index:1}
+.tile .media .poster,.tile .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.tile .media video{opacity:0;transition:opacity .25s}
+.tile:hover .media video{opacity:1}
+.tile-open{position:absolute;inset:0;z-index:3;cursor:pointer}
+.tile .cap{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;z-index:2}
+.tile .cap b{font-weight:600;font-size:16px}
+.tile .cap small{display:block;color:var(--ash);font-size:14px;font-stretch:90%}
+.tile .cap em{font-style:normal;font-stretch:80%;font-weight:500;font-size:13px;color:var(--ash);letter-spacing:.03em;white-space:nowrap}
+.tile .play{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid var(--bone);border-radius:50%;display:grid;place-items:center;opacity:0;transition:opacity .2s;z-index:2}
+.tile .play::after{content:"";width:0;height:0;border-left:12px solid var(--bone);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.tile:hover .play,.tile:focus-within .play{opacity:1}
+.tile a{position:absolute;inset:0;z-index:3}
+.more{margin-top:28px;display:flex;justify-content:flex-end}
+
+/* services — a picture per category, a ledger underneath */
+.group{display:grid;grid-template-columns:1fr 2fr;gap:40px;padding:48px 0;border-top:1px solid var(--line)}
+.group:last-of-type{border-bottom:1px solid var(--line)}
+.group .gh{position:sticky;top:calc(var(--bar) + 24px);align-self:start}
+.group .gh .pic{aspect-ratio:4/5;background:var(--graphite);overflow:hidden;border-radius:2px;margin-bottom:20px}
+.group .gh .pic img,.group .gh .pic video{width:100%;height:100%;object-fit:cover}
+.group .gh h3{margin-bottom:12px}
+.group .gh p{color:var(--ash);font-size:16px;max-width:26em}
+.row{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:28px;padding:18px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0;padding-top:0}
+.row h4{font-weight:600;font-size:18px;line-height:1.25}
+.row p{font-size:16px;color:#C9C5BD;max-width:none}
+.row .del{font-size:14px;color:var(--ash);font-stretch:90%;line-height:1.55}
+
+/* process — a real sequence, so numbers are allowed */
+.process .pic{aspect-ratio:21/9;background:var(--graphite);overflow:hidden;border-radius:2px;margin-bottom:44px}
+.process .pic img,.process .pic video{width:100%;height:100%;object-fit:cover}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:step}
+.step{padding-top:16px;border-top:1px solid var(--bone)}
+.step::before{counter-increment:step;content:counter(step);display:block;font-weight:600;font-stretch:112%;font-size:34px;line-height:1;margin-bottom:18px}
+.step h4{font-weight:600;font-size:18px;margin-bottom:8px}
+.step p{font-size:16px;color:#C9C5BD}
+.step b{color:var(--tungsten);font-weight:500}
+
+/* studio */
+.studio{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.studio .pic{aspect-ratio:4/5;background:var(--graphite);overflow:hidden;border-radius:2px}
+.studio .pic img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.05)}
+.studio .txt p{margin-bottom:18px}
+.studio .txt .lede{margin-bottom:28px}
+.facts{margin-top:32px;display:grid;grid-template-columns:repeat(3,auto);gap:32px;justify-content:start}
+.facts div{border-top:1px solid var(--line);padding-top:12px;min-width:120px}
+.facts strong{display:block;font-weight:600;font-size:20px;line-height:1.2}
+.facts span{font-size:14px;color:var(--ash);font-stretch:90%}
+
+/* academy */
+.academy{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.academy .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.academy p{color:#C9C5BD;margin-top:16px}
+.academy .courses{margin-top:14px;color:var(--ash);font-size:15px}
+.academy .cta{margin-top:28px}
+.academy .pic{aspect-ratio:4/3;background:var(--graphite);overflow:hidden;border-radius:2px}
+.academy .pic img,.academy .pic video{width:100%;height:100%;object-fit:cover}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px)}
+.contact .pic{aspect-ratio:16/9;background:var(--graphite);overflow:hidden;border-radius:2px;margin-bottom:28px}
+.contact .pic img,.contact .pic video{width:100%;height:100%;object-fit:cover}
+.contact .lines{margin-top:28px;display:flex;flex-direction:column;gap:6px;font-size:20px}
+.contact .lines a:hover{color:var(--tungsten)}
+.contact .lines small{display:block;color:var(--ash);font-size:15px;margin-top:20px;font-stretch:90%}
+.field{display:grid;gap:6px;margin-bottom:18px}
+.field label{font-size:14px;color:var(--ash);font-stretch:90%}
+.field input,.field textarea{width:100%;padding:12px 0;border-bottom:1px solid var(--line);border-radius:0;transition:border-color .15s}
+.field input:focus,.field textarea:focus{outline:0;border-bottom-color:var(--bone)}
+.field textarea{min-height:110px;resize:vertical}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-note{margin-top:10px;font-size:13px;color:var(--ash)}
+
+/* lightbox — click-to-watch-full for self-hosted clips */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)}
+.lightbox.open{display:flex}
+.lightbox-inner{width:100%;max-width:1200px}
+.lightbox-inner video{width:100%;max-height:80vh;background:#000}
+.lightbox-title{margin-top:14px;color:var(--ash);font-size:15px;text-align:center;font-stretch:90%}
+.lightbox-close{position:absolute;top:20px;right:24px;font-size:34px;line-height:1;color:var(--bone);width:44px;height:44px;display:flex;align-items:center;justify-content:center;z-index:2}
+.lightbox-close:hover{color:var(--tungsten)}
+
+/* footer — the bottom letterbox bar */
+footer{padding:40px 0 32px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px;align-items:start}
+footer .brand svg{width:30px;height:27px}
+footer .col a,footer .col span{display:block;font-size:15px;color:var(--ash);padding:3px 0}
+footer .col a:hover{color:var(--bone)}
+footer .col b{display:block;font-size:15px;font-weight:600;margin-bottom:8px;color:var(--bone)}
+footer .legal{grid-column:1/-1;margin-top:32px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--ash);font-stretch:90%}
+
+/* responsive */
+@media(max-width:1100px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .tile.wide{grid-column:span 2;grid-row:auto;aspect-ratio:2.39/1}
+  .tile.cinema{grid-column:span 2;aspect-ratio:1280/542}
+  .row{grid-template-columns:1fr 1.5fr;}
+  .row .del{grid-column:2}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  body{font-size:16px}
+  .nav,.top .btn{display:none}
+  .menu-btn{display:block}
+  .reel{aspect-ratio:16/9}
+  .hero-foot .wrap{grid-template-columns:1fr;gap:24px}
+  .hero-foot .side{justify-self:start}
+  .sec-head{grid-template-columns:1fr;gap:12px}
+  .sec-head p{justify-self:start}
+  .grid{grid-template-columns:1fr}
+  .tile,.tile.wide,.tile.cinema{grid-column:auto;grid-row:auto;aspect-ratio:16/9}
+  .tile.vertical{grid-column:auto;grid-row:auto;aspect-ratio:9/16}
+  .group{grid-template-columns:1fr;gap:24px;padding:36px 0}
+  .group .gh{position:static}
+  .group .gh .pic{aspect-ratio:16/9}
+  .row{grid-template-columns:1fr;gap:8px}
+  .row .del{grid-column:auto}
+  .studio,.academy .wrap,.contact .wrap{grid-template-columns:1fr}
+  .process .pic{aspect-ratio:16/9;margin-bottom:32px}
+  .facts{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Artificial Studios home">
+      <svg viewBox="0 0 48 44" aria-hidden="true"><path fill="currentColor" d="M4 44 L21 0 H27 L44 44 H36 L24 15 L12 44 Z"/><rect fill="currentColor" x="18.6" y="31" width="10.8" height="4.5"/></svg>
+      <span>ARTIFICIAL STUDIOS</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#studio">Studio</a>
+      <a href="#academy">Academy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Start a project</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="drawer" onclick="toggleMenu(this)">Menu</button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#work" onclick="closeMenu()">Work</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#studio" onclick="closeMenu()">Studio</a>
+  <a href="#academy" onclick="closeMenu()">Academy</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section class="hero" style="padding-bottom:0">
+  <div class="frame">
+    <div class="reel">
+      <!-- The showreel cycles through REEL_SEGMENTS (see the JS near the bottom of this file),
+           resizing to each clip's real aspect ratio — landscape, portrait, whatever it is. -->
+      <video id="reel" autoplay muted playsinline poster="" src="assets/video/hero/jcreel-master.mp4"></video>
+      <!-- Logo bumper: plays once over the reel on load, then fades to reveal it underneath. -->
+      <video id="logoIntro" class="logo-intro" autoplay muted playsinline src="assets/video/as-logo.mp4"></video>
+      <div class="live"><i></i>SHOWREEL 2026</div>
+      <button class="sound" onclick="toggleSound(this)">SOUND OFF</button>
+      <!-- Which piece is currently on screen, and a way to watch that one in full — see
+           REEL_SEGMENTS / the reel-caption JS below. -->
+      <div class="reel-cap" id="reelCap">
+        <div><b id="reelCapTitle"></b><small id="reelCapSub"></small></div>
+        <button type="button" id="reelCapWatch">Watch full episode</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap">
+      <h1 class="d1">The VFX house built on AI.</h1>
+      <div class="side">
+        <p class="lede">Emmy-winning creative direction, thirty years of broadcast craft, and a pipeline that turns months into days. Film, commercials, trailers, series and VFX for brands that need cinema-grade work at the speed of the feed.</p>
+        <div class="cta">
+          <a class="btn solid" href="#contact">Start a project</a>
+          <a class="btn" href="#work">See the work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clients">
+  <div class="wrap">
+    <span class="who">Career credits include</span>
+    <span class="logo">BBC</span>
+    <span class="logo">ITV</span>
+    <span class="logo">PBS</span>
+    <span class="logo">CHANNEL 4</span>
+    <span class="logo">CBS</span>
+    <span class="logo">AMAZON</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="d2">Selected work</h2>
+      <p>Every frame here was generated, directed and finished in-house.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work by area">
+      <button aria-pressed="true" data-cat="all">All</button>
+      <button aria-pressed="false" data-cat="film">Film</button>
+      <button aria-pressed="false" data-cat="commercials">Commercials</button>
+      <button aria-pressed="false" data-cat="trailers">Trailers</button>
+      <button aria-pressed="false" data-cat="tv">TV</button>
+      <button aria-pressed="false" data-cat="product">Product</button>
+      <button aria-pressed="false" data-cat="music">Music</button>
+      <button aria-pressed="false" data-cat="series">Series</button>
+      <button aria-pressed="false" data-cat="vfx">VFX</button>
+      <button aria-pressed="false" data-cat="social">Social</button>
+    </div>
+    <div class="grid" id="grid">
+      <!-- Self-hosted clips: hover plays a muted preview, click opens the full video with sound
+           in the lightbox (see .lightbox CSS/JS below) — no YouTube dependency for these.
+           Ordered newest-first by each clip's real creation date (source file metadata /
+           filenames), then the two with no reliable date, then the older/2025 legacy
+           credited pieces from the existing site. -->
+      <article class="tile" data-cat="film">
+        <div class="media"><img class="poster" src="assets/img/work/elgar-crowd-test.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/elgar-crowd-test.jpg"><source src="assets/video/work/elgar-crowd-test.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Elgar</b><small>Crowd & continuity test</small></div><em>Film</em></div>
+        <button class="tile-open" data-video="assets/video/work/elgar-crowd-test.mp4" data-title="Elgar — crowd & continuity test" aria-label="Watch Elgar crowd test"></button>
+      </article>
+      <article class="tile" data-cat="tv">
+        <div class="media"><img class="poster" src="assets/img/work/moonlighting-test.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/moonlighting-test.jpg"><source src="assets/video/work/moonlighting-test.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Moonlighting</b><small>Pilot test</small></div><em>TV</em></div>
+        <button class="tile-open" data-video="assets/video/work/moonlighting-test.mp4" data-title="Moonlighting — pilot test" aria-label="Watch Moonlighting pilot test"></button>
+      </article>
+      <article class="tile vertical" data-cat="social">
+        <div class="media"><img class="poster" src="assets/img/work/mr-james-teaser.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/mr-james-teaser.jpg"><source src="assets/video/work/mr-james-teaser.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Mr James</b><small>Teaser</small></div><em>Social</em></div>
+        <button class="tile-open" data-video="assets/video/work/mr-james-teaser.mp4" data-title="Mr James — teaser" aria-label="Watch Mr James teaser"></button>
+      </article>
+      <article class="tile" data-cat="series">
+        <div class="media"><img class="poster" src="assets/img/work/mr-james-ep2-opening.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/mr-james-ep2-opening.jpg"><source src="assets/video/work/mr-james-ep2-opening.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Mr James</b><small>Ep.2 "Ecstasy of Gold" — opening test</small></div><em>Series</em></div>
+        <button class="tile-open" data-video="assets/video/work/mr-james-ep2-opening.mp4" data-title="Mr James — Ep.2 &quot;Ecstasy of Gold&quot; opening test" aria-label="Watch Mr James Ep 2 opening test"></button>
+      </article>
+      <article class="tile" data-cat="film">
+        <div class="media"><img class="poster" src="assets/img/work/devil-rides-shotgun.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/devil-rides-shotgun.jpg"><source src="assets/video/work/devil-rides-shotgun.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Devil Rides Shotgun</b><small>Feature film test</small></div><em>Film</em></div>
+        <button class="tile-open" data-video="assets/video/work/devil-rides-shotgun.mp4" data-title="Devil Rides Shotgun — feature film test" aria-label="Watch Devil Rides Shotgun"></button>
+      </article>
+      <article class="tile vertical" data-cat="series">
+        <div class="media"><img class="poster" src="assets/img/work/planet-spectrum-mothman.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/planet-spectrum-mothman.jpg"><source src="assets/video/work/planet-spectrum-mothman.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Planet Spectrum</b><small>The Mothman of Point Pleasant</small></div><em>Series</em></div>
+        <button class="tile-open" data-video="assets/video/work/planet-spectrum-mothman.mp4" data-title="Planet Spectrum — The Mothman of Point Pleasant" aria-label="Watch Planet Spectrum Mothman episode"></button>
+      </article>
+      <article class="tile" data-cat="series">
+        <div class="media"><img class="poster" src="assets/img/work/planet-spectrum-case0312.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/planet-spectrum-case0312.jpg"><source src="assets/video/work/planet-spectrum-case0312.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Planet Spectrum</b><small>Case 0312 — found footage</small></div><em>Series</em></div>
+        <button class="tile-open" data-video="assets/video/work/planet-spectrum-case0312.mp4" data-title="Planet Spectrum — Case 0312" aria-label="Watch Planet Spectrum Case 0312"></button>
+      </article>
+      <article class="tile vertical" data-cat="series">
+        <div class="media"><img class="poster" src="assets/img/work/planet-spectrum-uap.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/planet-spectrum-uap.jpg"><source src="assets/video/work/planet-spectrum-uap.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Planet Spectrum</b><small>Case 002 — UAP</small></div><em>Series</em></div>
+        <button class="tile-open" data-video="assets/video/work/planet-spectrum-uap.mp4" data-title="Planet Spectrum — Case 002, UAP" aria-label="Watch Planet Spectrum UAP episode"></button>
+      </article>
+      <article class="tile" data-cat="music">
+        <div class="media"><img class="poster" src="assets/img/work/not-gorillaz.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/not-gorillaz.jpg"><source src="assets/video/work/not-gorillaz.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Not Gorillaz</b><small>"Can't afford the sunshine"</small></div><em>Music video</em></div>
+        <button class="tile-open" data-video="assets/video/work/not-gorillaz.mp4" data-title="Not Gorillaz — &quot;Can't afford the sunshine&quot;" aria-label="Watch Not Gorillaz music video"></button>
+      </article>
+      <article class="tile" data-cat="product">
+        <div class="media"><img class="poster" src="assets/img/work/easy-sailor.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/easy-sailor.jpg"><source src="assets/video/work/easy-sailor.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Easy Sailor</b><small>Motorcycle film test</small></div><em>Product</em></div>
+        <button class="tile-open" data-video="assets/video/work/easy-sailor.mp4" data-title="Easy Sailor" aria-label="Watch Easy Sailor"></button>
+      </article>
+      <article class="tile wide" data-cat="film">
+        <div class="media"><img class="poster" src="assets/img/work/the-big-jeez.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/the-big-jeez.jpg"><source src="assets/video/work/the-big-jeez.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>The Big Jeez</b><small>Title sequence test</small></div><em>Film</em></div>
+        <button class="tile-open" data-video="assets/video/work/the-big-jeez.mp4" data-title="The Big Jeez — title sequence test" aria-label="Watch The Big Jeez title sequence test"></button>
+      </article>
+      <article class="tile cinema" data-cat="vfx">
+        <div class="media"><img class="poster" src="assets/img/work/creature-vfx-test.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/creature-vfx-test.jpg"><source src="assets/video/work/creature-vfx-test.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Creature test</b><small>Full VFX creature build</small></div><em>VFX</em></div>
+        <button class="tile-open" data-video="assets/video/work/creature-vfx-test.mp4" data-title="Creature VFX test" aria-label="Watch creature VFX test"></button>
+      </article>
+
+      <!-- No reliable date signal in source file/metadata for these two -->
+      <article class="tile wide" data-cat="product">
+        <div class="media"><img class="poster" src="assets/img/work/motorshow-2027.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/motorshow-2027.jpg"><source src="assets/video/work/motorshow-2027.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Motorshow 2027</b><small>Concept vehicle, full CG</small></div><em>Product</em></div>
+        <button class="tile-open" data-video="assets/video/work/motorshow-2027.mp4" data-title="Motorshow 2027 — concept vehicle" aria-label="Watch Motorshow 2027"></button>
+      </article>
+      <article class="tile" data-cat="vfx">
+        <div class="media"><img class="poster" src="assets/img/work/sweep-surfer.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/img/work/sweep-surfer.jpg"><source src="assets/video/work/sweep-surfer.mp4" type="video/mp4"></video></div>
+        <span class="play" aria-hidden="true"></span>
+        <div class="cap"><div><b>Sweep — solar surf</b><small>Character VFX test</small></div><em>VFX</em></div>
+        <button class="tile-open" data-video="assets/video/work/sweep-surfer.mp4" data-title="Sweep — solar surf, character VFX test" aria-label="Watch Sweep solar surf VFX test"></button>
+      </article>
+
+      <!-- Older, previously-credited work carried over from the current site -->
+      <article class="tile wide" data-cat="series"><div class="art"><video autoplay muted loop playsinline poster="assets/img/work/phenomx-planet-spectrum.jpg"><source src="assets/video/ambient/phenomx.mp4" type="video/mp4"></video></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>PHENOMX</b><small>Planet Spectrum</small></div><em>Series</em></div><a href="https://www.planetspectrum.tv/" target="_blank" rel="noopener" aria-label="Open PHENOMX on Planet Spectrum"></a></article>
+      <article class="tile" data-cat="commercials"><div class="art" style="background-image:url('https://img.youtube.com/vi/mXFUqaHjosQ/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>Coca-Cola "Next Stop"</b><small>Master cut</small></div><em>Commercial</em></div><a href="https://youtu.be/mXFUqaHjosQ" target="_blank" rel="noopener" aria-label="Watch Coca-Cola Next Stop on YouTube"></a></article>
+      <article class="tile" data-cat="commercials"><div class="art" style="background-image:url('https://img.youtube.com/vi/EtgnZw_S0_c/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>BMW 2025</b><small>Speculative commercial</small></div><em>Commercial</em></div><a href="https://youtu.be/EtgnZw_S0_c" target="_blank" rel="noopener" aria-label="Watch BMW 2025 on YouTube"></a></article>
+      <article class="tile wide" data-cat="trailers"><div class="art" style="background-image:url('https://img.youtube.com/vi/oE3WXCfn7kA/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>Stealing God</b><small>Feature pitch trailer, w/ Roger Eaton</small></div><em>Trailer</em></div><a href="https://youtu.be/oE3WXCfn7kA" target="_blank" rel="noopener" aria-label="Watch Stealing God trailer on YouTube"></a></article>
+      <article class="tile" data-cat="commercials"><div class="art" style="background-image:url('https://img.youtube.com/vi/2dnMexqAsRE/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>L'Oréal Advert 2025</b><small>Anatomical consistency demo</small></div><em>Commercial</em></div><a href="https://youtu.be/2dnMexqAsRE" target="_blank" rel="noopener" aria-label="Watch L'Oréal Advert 2025 on YouTube"></a></article>
+      <article class="tile" data-cat="trailers"><div class="art" style="background-image:url('https://img.youtube.com/vi/277NgiGyDw8/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>The Founder Trailer</b><small>2025</small></div><em>Trailer</em></div><a href="https://youtu.be/277NgiGyDw8" target="_blank" rel="noopener" aria-label="Watch The Founder Trailer on YouTube"></a></article>
+      <article class="tile" data-cat="tv"><div class="art" style="background-image:url('https://img.youtube.com/vi/Y6hbi8ZSvsU/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>True Crime AI Reel</b><small>Broadcaster B-roll showreel</small></div><em>TV</em></div><a href="https://youtu.be/Y6hbi8ZSvsU" target="_blank" rel="noopener" aria-label="Watch True Crime AI Reel on YouTube"></a></article>
+      <article class="tile" data-cat="product"><div class="art" style="background-image:url('https://img.youtube.com/vi/DNHdPyFEF1Q/mqdefault.jpg')"></div><span class="play" aria-hidden="true"></span><div class="cap"><div><b>Product Showreel</b><small>1-minute, single-image product shots</small></div><em>Product</em></div><a href="https://youtu.be/DNHdPyFEF1Q" target="_blank" rel="noopener" aria-label="Watch Product Showreel on YouTube"></a></article>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close video">&times;</button>
+  <div class="lightbox-inner">
+    <video id="lightbox-video" controls playsinline><source src="" type="video/mp4"></video>
+    <p class="lightbox-title" id="lightbox-title"></p>
+  </div>
+</div>
+
+<section id="services" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="d2">Services</h2>
+      <p>Concept to delivery under one roof — fully AI-generated, hybrid with live-action, or a traditional shoot with an AI-accelerated finish. No handoffs, no waiting on a render farm.</p>
+    </div>
+
+    <div class="group">
+      <div class="gh">
+        <div class="pic"><video autoplay muted loop playsinline poster="assets/img/services/svc-production.jpg"><source src="assets/video/ambient/svc-production.mp4" type="video/mp4"></video></div>
+        <h3 class="d3">Production</h3>
+        <p>Full pictures, start to finish — AI-native or hybrid with live-action, whichever gets there faster. Previs in 48 hours, a finished spot in days, a series at volume.</p>
+      </div>
+      <div>
+        <div class="row"><h4>Feature films</h4><p>AI-native and hybrid features from development previs to final picture. Consistent characters, worlds and lighting across a full runtime.</p><div class="del">Previs, animatics, shot generation, edit, grade, deliverables</div></div>
+        <div class="row"><h4>Commercials</h4><p>Spots for TV and social, with every cutdown and aspect ratio built from the same master.</p><div class="del">15, 30, 60 second masters, 9:16 and 1:1 versions, stills</div></div>
+        <div class="row"><h4>TV and broadcast</h4><p>Promos, idents, title sequences and branded entertainment to broadcast spec.</p><div class="del">Promos, idents, titles, sting packages, clean and textless versions</div></div>
+        <div class="row"><h4>Trailers and teasers</h4><p>For films, games, series and launches. The full trailer craft, without a finished thing to cut from.</p><div class="del">Teaser, main trailer, social cutdowns, key art</div></div>
+        <div class="row"><h4>Product films</h4><p>Hero shots and launch films with materials and lighting that hold up next to real photography.</p><div class="del">Launch film, hero shots, feature callouts, configurator-grade stills</div></div>
+        <div class="row"><h4>Series and micro-drama</h4><p>Episodic short-form built for the feed. Our own channel, Planet Spectrum, runs on this pipeline every week.</p><div class="del">Format, pilot, season production, packaging, publishing assets</div></div>
+        <div class="row"><h4>Social and short-form</h4><p>Vertical-first content at volume, with a look that stays consistent across a hundred posts.</p><div class="del">Monthly content packs, hooks, adverts, channel identity</div></div>
+        <div class="row"><h4>Music videos</h4><p>Performance, narrative or pure image. Built around the track, not around a location budget.</p><div class="del">Full video, visualiser, lyric version, social cuts</div></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="gh">
+        <div class="pic"><video autoplay muted loop playsinline poster="assets/img/services/svc-vfx.jpg"><source src="assets/video/ambient/svc-vfx.mp4" type="video/mp4"></video></div>
+        <h3 class="d3">VFX and post</h3>
+        <p>The work that used to need a hundred seats — on real plates or a full CG shot, whichever the frame needs. Delivered by a small senior team and a very large amount of compute.</p>
+      </div>
+      <div>
+        <div class="row"><h4>VFX and compositing</h4><p>Set extension, cleanup, crowd, sky and environment replacement, integrated into live-action plates.</p><div class="del">Plate prep, extension, comp, roto and paint, final conform</div></div>
+        <div class="row"><h4>Environments and worlds</h4><p>Generated locations that replace the recce, the build and the matte painting.</p><div class="del">Location design, matte replacement, virtual sets, LED wall plates</div></div>
+        <div class="row"><h4>Digital characters</h4><p>Consistent AI performers with matched voice, wardrobe and motion across every shot and every episode.</p><div class="del">Character design, likeness lock, performance, voice, motion</div></div>
+        <div class="row"><h4>Motion design and titles</h4><p>Title sequences, kinetic type and graphics that belong to the picture rather than sit on top of it.</p><div class="del">Titles, lower thirds, end boards, broadcast packages</div></div>
+        <div class="row"><h4>Colour and finish</h4><p>Grade, conform and delivery to broadcast, cinema and platform spec.</p><div class="del">Grade, conform, QC, DCP, broadcast and platform deliverables</div></div>
+        <div class="row"><h4>Voice, sound and dubbing</h4><p>AI voice, multilingual versions and sound design so a single master ships to every market.</p><div class="del">VO, dubbing, sound design, mix, localised masters</div></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="gh">
+        <div class="pic"><video autoplay muted loop playsinline poster="assets/img/services/svc-design.jpg"><source src="assets/video/ambient/svc-design.mp4" type="video/mp4"></video></div>
+        <h3 class="d3">Design and strategy</h3>
+        <p>The thinking before the picture, and the systems that let a team keep making pictures after we leave.</p>
+      </div>
+      <div>
+        <div class="row"><h4>Branding and identity</h4><p>Logos, motion identities and brand films built to move from day one.</p><div class="del">Identity, motion system, brand film, guidelines</div></div>
+        <div class="row"><h4>Concept, boards and previs</h4><p>Pitch visuals and animated previs in 48 hours, so the idea sells before anyone commits a budget.</p><div class="del">Mood films, storyboards, animatics, pitch decks</div></div>
+        <div class="row"><h4>Pitch and investor films</h4><p>The film that gets the project green-lit. Trailer, sizzle or proof of concept.</p><div class="del">Sizzle, proof of concept, sizzle cutdowns, deck visuals</div></div>
+        <div class="row"><h4>Exhibitions and events</h4><p>Screen content, installations and LED wall visuals for stands, launches and live shows.</p><div class="del">Loop content, wall plates, projection, install support</div></div>
+        <div class="row"><h4>Pipeline and consultancy</h4><p>We build the AI production pipeline inside your studio or agency, then train your people to run it.</p><div class="del">Audit, pipeline build, tooling, playbooks, retained support</div></div>
+        <div class="row"><h4>Artificial Academy</h4><p>Hands-on training in AI filmmaking for creative teams, from first prompt to finished picture.</p><div class="del">Courses, team workshops, one-to-one, cohort programmes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="d2">How a project runs</h2>
+      <p>One team from brief to master. You see moving pictures inside the first week.</p>
+    </div>
+    <div class="pic"><video autoplay muted loop playsinline poster="assets/img/process-hero.jpg"><source src="assets/video/ambient/process-hero.mp4" type="video/mp4"></video></div>
+    <div class="steps">
+      <div class="step"><h4>Brief</h4><p>A call, a deck or a paragraph. We come back with a direction, a schedule and a number. <b>Same week.</b></p></div>
+      <div class="step"><h4>Previs</h4><p>Animated previs of the whole piece: look, pace, characters, world. You react to a film, not a document. <b>48 hours.</b></p></div>
+      <div class="step"><h4>Production</h4><p>Shot generation, performance, VFX and edit in one pass. Daily reviews, changes made overnight. <b>Days, not weeks.</b></p></div>
+      <div class="step"><h4>Delivery</h4><p>Grade, sound, versions and every deliverable to spec. Then the cutdowns, the stills, the next episode. <b>On the date.</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="studio" class="rule">
+  <div class="wrap studio">
+    <div class="pic"><img src="assets/img/dtfrontpage2.jpg" alt="Duncan Thomsen, founder and creative director of Artificial Studios" width="1200" height="1402"></div>
+    <div class="txt">
+      <h2 class="d2">Run by a filmmaker, not a prompt.</h2>
+      <p class="lede" style="margin-top:20px">Artificial Studios was founded by Duncan Thomsen, an Emmy-winning editor and creative director with thirty years in broadcast and advertising for some of the world's biggest brands.</p>
+      <p>Duncan is widely regarded as a world leader in AI filmmaking — among the first in the world to publish AI-generated photography commercially, and the first to bring AI into a true crime documentary for CBS and Amazon. He advises on AI legalities and copyright, lectures on AI's impact on education and employment, and ran the UK's first funded AI creativity cohorts: two separate courses, both completed with a 100% success rate.</p>
+      <p>The studio treats AI the way ILM treated the computer in 1985: as the next camera. The craft is the same. The direction, the edit, the eye for a performance and a frame. What changed is that a two-person team can now deliver what took a building.</p>
+      <p>Duncan runs the studio with Anthony Crossby, co-managing director of The Independent Post Company and a post-production veteran of over 30 years (Mock The Week, Whose Line Is It Anyway) — a creative partnership nearly two decades in the making.</p>
+      <p>Alongside client work the studio runs Planet Spectrum, an in-house channel producing short-form series every week. It is the proving ground for every tool and technique we sell.</p>
+      <div class="facts">
+        <div><strong>Emmy Award</strong><span>The Ascent of Money</span></div>
+        <div><strong>30 years</strong><span>Broadcast and advertising</span></div>
+        <div><strong>London, Brighton, LA</strong><span>Studio and clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="academy" class="academy">
+  <div class="wrap">
+    <div>
+      <h2 class="d2">Artificial Academy</h2>
+      <p class="lede">Learn the pipeline from the people who use it every day. Courses for individuals, workshops for creative teams, and a cohort programme that ends with a finished film.</p>
+      <p class="courses">Two-day intensive AI production course, and a 4 × 2-hour live AI Visual Creation course — both by enquiry.</p>
+      <a class="btn cta" href="#contact">See courses</a>
+    </div>
+    <div class="pic"><video autoplay muted loop playsinline poster="assets/img/academy-hero.jpg"><source src="assets/video/ambient/academy-hero.mp4" type="video/mp4"></video></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div>
+      <div class="pic"><video autoplay muted loop playsinline poster="assets/img/contact-hero.jpg"><source src="assets/video/ambient/contact-hero.mp4" type="video/mp4"></video></div>
+      <h2 class="d2">Tell us what you're making.</h2>
+      <div class="lines">
+        <a href="mailto:info@artificialstudios.co.uk">info@artificialstudios.co.uk</a>
+        <a href="tel:+447983606196">07983 606196</a>
+        <small>Brighton studio. Meetings in London and Los Angeles. Replies within one working day.</small>
+      </div>
+    </div>
+    <div>
+      <!-- Netlify-forms-compatible: if this deploys to Netlify, "data-netlify" + the hidden
+           form-name field make this work with zero backend. On any other host, point this
+           form's submission at your own handler (see README "Contact form") — the JS below
+           falls back to a mailto: draft either way, so it never dead-ends. -->
+      <form id="brief-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website" onsubmit="return sendBrief(event)">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Don't fill this out if you're human: <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <div class="split">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="field"><label for="f-co">Company</label><input id="f-co" name="company" type="text" autocomplete="organization"></div>
+        <div class="field"><label for="f-brief">What are you making, and when does it need to exist?</label><textarea id="f-brief" name="brief"></textarea></div>
+        <button class="btn solid" type="submit">Send brief</button>
+        <p class="form-note">Sends a normal email draft from your device. Ask your host to wire this to a form handler (Netlify Forms works automatically) to send silently instead.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#" aria-label="Artificial Studios home">
+        <svg viewBox="0 0 48 44" aria-hidden="true"><path fill="currentColor" d="M4 44 L21 0 H27 L44 44 H36 L24 15 L12 44 Z"/><rect fill="currentColor" x="18.6" y="31" width="10.8" height="4.5"/></svg>
+        <span>ARTIFICIAL STUDIOS</span>
+      </a>
+      <p class="meta" style="margin-top:16px;max-width:24em">An AI-native film and VFX studio. Part of GreyEnt.</p>
+    </div>
+    <div class="col"><b>Studio</b><a href="#work">Work</a><a href="#services">Services</a><a href="#studio">About</a><a href="#academy">Academy</a><a href="#contact">Contact</a></div>
+    <div class="col"><b>Elsewhere</b><a href="https://www.planetspectrum.tv/" target="_blank" rel="noopener">Planet Spectrum</a></div>
+    <div class="col"><b>Where</b><span>Brighton, UK</span><span>London</span><span>Los Angeles</span><a href="https://artificialstudios.co.uk/private/" style="margin-top:10px">Client login</a></div>
+    <div class="legal"><span>&copy; <span id="year"></span> Artificial Studios Ltd. All rights reserved.</span><span>Privacy</span></div>
+  </div>
+</footer>
+
+<script>
+  // work filter
+  const buttons=document.querySelectorAll('.filters button');
+  const tiles=document.querySelectorAll('#grid .tile');
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+    buttons.forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    const c=b.dataset.cat;
+    tiles.forEach(t=>t.classList.toggle('hidden',c!=='all'&&t.dataset.cat!==c));
+  }));
+  // self-hosted work tiles — hover/focus plays a muted preview; the button in front of
+  // each tile opens the same file full-size, with sound, in the lightbox below.
+  document.querySelectorAll('.tile .media').forEach(media=>{
+    const video = media.querySelector('video');
+    if(!video) return;
+    const play = ()=>{ video.currentTime = 0; video.play().catch(()=>{}); };
+    const stop = ()=>{ video.pause(); };
+    media.closest('.tile').addEventListener('mouseenter', play);
+    media.closest('.tile').addEventListener('mouseleave', stop);
+    media.closest('.tile').addEventListener('focusin', play);
+    media.closest('.tile').addEventListener('focusout', stop);
+  });
+  const lightbox = document.getElementById('lightbox');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  function openLightbox(src, title){
+    lightboxVideo.querySelector('source').src = src;
+    lightboxVideo.load();
+    lightboxVideo.muted = false;
+    lightboxTitle.textContent = title || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden','false');
+    lightboxVideo.play().catch(()=>{});
+  }
+  function closeLightbox(){
+    lightboxVideo.pause();
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+  }
+  document.querySelectorAll('.tile-open').forEach(btn=>{
+    btn.addEventListener('click', ()=>openLightbox(btn.dataset.video, btn.dataset.title));
+  });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e=>{ if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLightbox(); });
+
+  // logo bumper: fade out once it's played through, revealing the reel behind it
+  (function(){
+    const intro=document.getElementById('logoIntro');
+    if(!intro) return;
+    intro.addEventListener('ended', ()=>intro.classList.add('hide'));
+  })();
+  // hero reel: JCreel opens every lap, played in full. Then everything else shuffles
+  // into a random order — Sweep Solar Surf plays in full like JCreel, the rest cut to
+  // ~10s each — before looping back to JCreel and reshuffling for the next lap.
+  // Each segment's ratio is its real source pixel size — the reel box is resized to
+  // match exactly (landscape sizes by width, portrait by height) so nothing gets
+  // cropped or squashed, whatever shape the clip actually is.
+  const JCREEL={src:'assets/video/hero/jcreel-master.mp4',ratio:'1280/720',full:true,title:'JCreel — character transformation',sub:'One performer, four builds: soldier, gunslinger, astronaut, hero',watch:'Watch the full JCreel'};
+  // the full pool: every real clip on the site gets its ~10s turn in the shuffle over
+  // successive laps, not just a fixed favourites set — JCreel and Sweep are the two
+  // that play in full (see the `full` flag), everything else is a taste
+  const REEL_OTHERS=[
+    {src:'assets/video/hero/sweep-surfer.mp4',ratio:'1280/720',full:true,title:'Sweep — solar surf',sub:'Character VFX test',watch:'Watch the full test'},
+    {src:'assets/video/hero/devil-rides-shotgun.mp4',ratio:'1280/720',title:'Devil Rides Shotgun',sub:'Feature film test',watch:'Watch the full test'},
+    {src:'assets/video/hero/mr-james.mp4',ratio:'720/1280',title:'Mr James',sub:'Promo',watch:'Watch the full promo'},
+    {src:'assets/video/hero/the-big-jeez.mp4',ratio:'1920/1080',title:'The Big Jeez',sub:'Title sequence test',watch:'Watch the full sequence'},
+    {src:'assets/video/hero/creature-vfx.mp4',ratio:'1920/812',title:'Creature VFX test',sub:'Full VFX creature build',watch:'Watch the full test'},
+    {src:'assets/video/hero/elgar-crowd-test.mp4',ratio:'1280/720',title:'Elgar',sub:'Crowd & continuity test',watch:'Watch the full test'},
+    {src:'assets/video/hero/moonlighting-test.mp4',ratio:'1280/720',title:'Moonlighting',sub:'Pilot test',watch:'Watch the full pilot'},
+    {src:'assets/video/hero/mr-james-teaser.mp4',ratio:'720/1280',title:'Mr James',sub:'Teaser',watch:'Watch the full teaser'},
+    {src:'assets/video/hero/mr-james-ep2-opening.mp4',ratio:'1280/720',title:'Mr James',sub:'Ep.2 "Ecstasy of Gold" — opening test',watch:'Watch the full episode'},
+    {src:'assets/video/hero/planet-spectrum-mothman.mp4',ratio:'496/864',title:'Planet Spectrum',sub:'The Mothman of Point Pleasant',watch:'Watch the full episode'},
+    {src:'assets/video/hero/planet-spectrum-case0312.mp4',ratio:'864/496',title:'Planet Spectrum',sub:'Case 0312 — found footage',watch:'Watch the full episode'},
+    {src:'assets/video/hero/planet-spectrum-uap.mp4',ratio:'496/864',title:'Planet Spectrum',sub:'Case 002 — UAP',watch:'Watch the full episode'},
+    {src:'assets/video/hero/not-gorillaz.mp4',ratio:'1280/720',title:'Not Gorillaz',sub:'"Can’t afford the sunshine"',watch:'Watch the full video'},
+    {src:'assets/video/hero/easy-sailor.mp4',ratio:'1920/1080',title:'Easy Sailor',sub:'Motorcycle film test',watch:'Watch the full film'},
+    {src:'assets/video/hero/motorshow-2027.mp4',ratio:'1920/1080',title:'Motorshow 2027',sub:'Concept vehicle, full CG',watch:'Watch the full film'}
+  ];
+  (function(){
+    const v=document.getElementById('reel');
+    const box=document.querySelector('.reel');
+    const cap=document.getElementById('reelCap');
+    const capTitle=document.getElementById('reelCapTitle');
+    const capSub=document.getElementById('reelCapSub');
+    const capWatch=document.getElementById('reelCapWatch');
+    if(!v||!box||!cap) return;
+    const SEGMENT_CAP_MS=10000; // non-"full" clips get cut after ~10s so the shuffle stays snappy
+    let phase='jcreel',queue=[],capTimer=null;
+    function shuffle(arr){
+      const a=arr.slice();
+      for(let n=a.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]];}
+      return a;
+    }
+    function showCaption(seg){
+      capTitle.textContent=seg.title;
+      capSub.textContent=seg.sub;
+      capWatch.textContent=seg.watch;
+      capWatch.onclick=()=>openLightbox(seg.src,seg.title);
+      cap.classList.add('show');
+    }
+    function playSegment(seg){
+      const [w,h]=seg.ratio.split('/').map(Number);
+      cap.classList.remove('show');
+      box.style.aspectRatio=seg.ratio;
+      box.classList.toggle('portrait',h>w);
+      v.src=seg.src;
+      v.load();
+      v.play().catch(()=>{});
+      setTimeout(()=>showCaption(seg),1200);
+      clearTimeout(capTimer);
+      if(!seg.full) capTimer=setTimeout(advance,SEGMENT_CAP_MS);
+    }
+    function startJCreel(){
+      phase='jcreel';
+      playSegment(JCREEL);
+    }
+    function startNextOther(){
+      phase='others';
+      if(queue.length===0) queue=shuffle(REEL_OTHERS);
+      playSegment(queue.shift());
+    }
+    function advance(){
+      clearTimeout(capTimer);
+      if(phase==='jcreel') startNextOther();
+      else if(queue.length>0) startNextOther();
+      else startJCreel();
+    }
+    v.addEventListener('ended',advance);
+    // JCreel is already playing via the video's initial src= — just match its box shape
+    box.style.aspectRatio=JCREEL.ratio;
+    setTimeout(()=>showCaption(JCREEL),1800);
+  })();
+  // reel sound
+  function toggleSound(btn){
+    const v=document.getElementById('reel');
+    v.muted=!v.muted;
+    btn.textContent=v.muted?'SOUND OFF':'SOUND ON';
+  }
+  // mobile menu
+  function toggleMenu(btn){
+    const d=document.getElementById('drawer');
+    const open=d.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    btn.textContent=open?'Close':'Menu';
+  }
+  function closeMenu(){
+    document.getElementById('drawer').classList.remove('open');
+    const b=document.querySelector('.menu-btn');
+    b.setAttribute('aria-expanded','false');b.textContent='Menu';
+  }
+  // contact — tries a real form submission (Netlify Forms et al) first; if that fails
+  // (i.e. no backend is wired up yet), falls back to a mailto: draft so it never dead-ends.
+  function sendBrief(e){
+    const form=e.target;
+    const data=new FormData(form);
+    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString() })
+      .then(()=>{ alert("Thanks — that's sent."); form.reset(); })
+      .catch(()=>{
+        const g=id=>encodeURIComponent(document.getElementById(id).value);
+        const body=`Name: ${g('f-name')}%0AEmail: ${g('f-email')}%0ACompany: ${g('f-co')}%0A%0A${g('f-brief')}`;
+        location.href=`mailto:info@artificialstudios.co.uk?subject=Project brief&body=${body}`;
+      });
+    return false;
+  }
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
