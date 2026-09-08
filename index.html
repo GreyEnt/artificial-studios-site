@@ -157,8 +157,16 @@ section{padding:clamp(72px,9vw,140px) 0}
 .filters button[aria-pressed="true"]{color:var(--bone);border-bottom-color:var(--tungsten)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:14px}
 .tile{position:relative;aspect-ratio:16/9;background:var(--graphite);overflow:hidden;border-radius:2px}
-.tile.wide{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.tile.vertical{grid-row:span 3;aspect-ratio:auto}
+/* wide/vertical tiles used to rely on aspect-ratio:auto and borrow their height from
+   whichever neighbours happened to share their spanned grid rows -- fine when dense
+   packing seats them next to a normally-sized tile, but with nothing establishing
+   real height in isolation, a lone wide/vertical tile collapses to a sliver (its own
+   content is all position:absolute, so it has no intrinsic size of its own). Giving
+   both a real aspect-ratio (matching their footprint: 2 cols x 2 rows, and 1 col x 3
+   rows, of a 16:9 base tile) makes their height self-contained regardless of layout
+   luck. */
+.tile.wide{grid-column:span 2;grid-row:span 2;aspect-ratio:16/9}
+.tile.vertical{grid-row:span 3;aspect-ratio:16/27}
 /* cinema — a real cinemascope-shaped clip (creature-vfx-test is 1280x542) gets its own
    short-and-wide cell instead of letterboxing thin inside a plain 16:9 tile */
 .tile.cinema{grid-column:span 2;aspect-ratio:1280/542}
