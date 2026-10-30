@@ -918,8 +918,8 @@ section{padding:clamp(64px,7vw,112px) 0}
     // scrolling the hero out of view switches its sound back off
     const reelBox=document.querySelector('.reel');
     if(soundBtn&&reelBox) new IntersectionObserver(es=>{
-      if(es[0].intersectionRatio<0.25&&soundOn) soundBtn.click();
-    },{threshold:0.25}).observe(reelBox);
+      if(es[0].intersectionRatio<0.6&&soundOn) soundBtn.click();
+    },{threshold:0.6}).observe(reelBox);
     function shuffle(arr){
       const a=arr.slice();
       for(let n=a.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]];}
@@ -975,10 +975,10 @@ section{padding:clamp(64px,7vw,112px) 0}
     });
     // scrolling a box out of view switches its sound back off
     const boxIO=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.intersectionRatio>=0.25) return;
+      if(e.intersectionRatio>=0.5) return;
       const o=btns.find(o=>o.btn.parentNode===e.target);
       if(o&&!o.v.muted) setBox(o.btn,o.v,false);
-    }),{threshold:0.25});
+    }),{threshold:0.5});
     boxes.forEach(b=>boxIO.observe(b));
     if(heroBtn) heroBtn.addEventListener('click',()=>{
       if(heroBtn.getAttribute('aria-pressed')==='true') btns.forEach(o=>setBox(o.btn,o.v,false));
