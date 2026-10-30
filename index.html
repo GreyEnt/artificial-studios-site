@@ -125,7 +125,7 @@ p{max-width:38em}
 .reel::after{bottom:0;transform-origin:bottom}
 .reel .live{position:absolute;left:18px;top:16px;z-index:3;display:flex;align-items:center;gap:8px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.08em;color:var(--bone);opacity:.9}
 .reel .live i{width:8px;height:8px;border-radius:50%;background:var(--tungsten)}
-.reel .sound{position:absolute;right:16px;bottom:14px;z-index:3;padding:8px 12px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.06em;background:rgba(0,0,0,.55);color:var(--bone);border-radius:2px}
+.reel .sound{position:absolute;right:16px;bottom:14px;z-index:4;cursor:pointer;padding:8px 12px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.06em;background:rgba(0,0,0,.55);color:var(--bone);border-radius:2px}
 .reel .reel-cap{position:absolute;left:18px;bottom:14px;z-index:3;max-width:min(70%,520px);display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:rgba(0,0,0,.55);border-radius:2px;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
 .reel .reel-cap.show{opacity:1;transform:translateY(0)}
 .reel .reel-cap b{font-size:16px;font-weight:600}
@@ -496,6 +496,7 @@ section{padding:clamp(64px,7vw,112px) 0}
       <video class="fill" muted playsinline preload="auto"></video>
       <!-- Logo bumper: plays once over the montage on load, then fades to reveal it underneath. -->
       <video id="logoIntro" class="logo-intro" autoplay muted playsinline src="assets/video/as-logo.mp4"></video>
+      <button type="button" class="sound" id="heroSound" aria-pressed="false">SOUND OFF</button>
     </div>
   </div>
   <div class="hero-foot">
@@ -886,7 +887,15 @@ section{padding:clamp(64px,7vw,112px) 0}
   (function(){
     const layers=[...document.querySelectorAll('.reel .fill')];
     if(layers.length<2) return;
-    let front=0,queue=[];
+    let front=0,queue=[],soundOn=false;
+    const soundBtn=document.getElementById('heroSound');
+    if(soundBtn) soundBtn.addEventListener('click',()=>{
+      soundOn=!soundOn;
+      layers[front].muted=!soundOn;
+      if(soundOn) layers[front].play().catch(()=>{});
+      soundBtn.textContent=soundOn?'SOUND ON':'SOUND OFF';
+      soundBtn.setAttribute('aria-pressed',soundOn);
+    });
     function shuffle(arr){
       const a=arr.slice();
       for(let n=a.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]];}
@@ -896,6 +905,8 @@ section{padding:clamp(64px,7vw,112px) 0}
     function swap(){
       const outgoing=layers[front],incoming=layers[1-front];
       incoming.currentTime=0;
+      incoming.muted=!soundOn;
+      outgoing.muted=true;
       incoming.play().catch(()=>{});
       incoming.classList.add('on');
       outgoing.classList.remove('on');
