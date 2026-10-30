@@ -882,12 +882,6 @@ section{padding:clamp(64px,7vw,112px) 0}
     els.forEach(v=>io.observe(v));
   })();
 
-  // logo bumper: fade out once it's played through, revealing the reel behind it
-  (function(){
-    const intro=document.getElementById('logoIntro');
-    if(!intro) return;
-    intro.addEventListener('ended', ()=>intro.classList.add('hide'));
-  })();
   // hero: loops the Selected work, Originals and About videos (not Mr James, nor the
   // Capabilities or Academy backgrounds), each played in full, back to
   // back, in a shuffled order that reshuffles every lap. Two stacked layers: the next
@@ -903,13 +897,29 @@ section{padding:clamp(64px,7vw,112px) 0}
     if(layers.length<2) return;
     let front=0,queue=[],soundOn=false;
     const soundBtn=document.getElementById('heroSound');
+    // logo bumper plays over the reel on load; while it's up, the sound belongs to the
+    // logo alone - the reel underneath stays muted until the bumper has finished
+    const intro=document.getElementById('logoIntro');
+    let introUp=!!intro;
+    function applySound(){
+      if(intro) intro.muted=!(soundOn&&introUp);
+      layers.forEach((v,n)=>{ v.muted=!(soundOn&&!introUp&&n===front); });
+    }
+    // if the browser refuses to play with sound, fall back to muted rather than freezing
+    function playSafe(v){ v.play().catch(()=>{ v.muted=true; v.play().catch(()=>{}); }); }
+    if(intro) intro.addEventListener('ended',()=>{ introUp=false; intro.classList.add('hide'); applySound(); playSafe(layers[front]); });
     if(soundBtn) soundBtn.addEventListener('click',()=>{
       soundOn=!soundOn;
-      layers[front].muted=!soundOn;
-      if(soundOn) layers[front].play().catch(()=>{});
+      applySound();
+      if(soundOn) playSafe(introUp?intro:layers[front]);
       soundBtn.textContent=soundOn?'SOUND ON':'SOUND OFF';
       soundBtn.setAttribute('aria-pressed',soundOn);
     });
+    // scrolling the hero out of view switches its sound back off
+    const reelBox=document.querySelector('.reel');
+    if(soundBtn&&reelBox) new IntersectionObserver(es=>{
+      if(es[0].intersectionRatio<0.25&&soundOn) soundBtn.click();
+    },{threshold:0.25}).observe(reelBox);
     function shuffle(arr){
       const a=arr.slice();
       for(let n=a.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]];}
@@ -919,12 +929,11 @@ section{padding:clamp(64px,7vw,112px) 0}
     function swap(){
       const outgoing=layers[front],incoming=layers[1-front];
       incoming.currentTime=0;
-      incoming.muted=!soundOn;
-      outgoing.muted=true;
-      incoming.play().catch(()=>{});
+      front=1-front;
+      applySound();
+      playSafe(incoming);
       incoming.classList.add('on');
       outgoing.classList.remove('on');
-      front=1-front;
       setTimeout(()=>{ outgoing.pause(); load(outgoing); },1000);
     }
     layers.forEach(v=>v.addEventListener('ended',()=>{ if(v===layers[front]) swap(); }));
@@ -964,6 +973,13 @@ section{padding:clamp(64px,7vw,112px) 0}
       btns.push({btn,v});
       box.appendChild(btn);
     });
+    // scrolling a box out of view switches its sound back off
+    const boxIO=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.intersectionRatio>=0.25) return;
+      const o=btns.find(o=>o.btn.parentNode===e.target);
+      if(o&&!o.v.muted) setBox(o.btn,o.v,false);
+    }),{threshold:0.25});
+    boxes.forEach(b=>boxIO.observe(b));
     if(heroBtn) heroBtn.addEventListener('click',()=>{
       if(heroBtn.getAttribute('aria-pressed')==='true') btns.forEach(o=>setBox(o.btn,o.v,false));
     });
