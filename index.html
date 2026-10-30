@@ -59,7 +59,7 @@
   --tungsten:#E9A23B;
   --gutter:clamp(20px,4vw,64px);
   --max:1520px;
-  --bar:64px;
+  --bar:72px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--black);color:var(--bone);font-family:"Archivo",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
@@ -86,6 +86,10 @@ p{max-width:38em}
 .brand{display:flex;align-items:center;gap:12px}
 .brand svg{width:22px;height:20px}
 .brand span{font-weight:700;font-stretch:118%;font-size:15px;letter-spacing:.04em}
+/* header lockup a step up so it holds its own on wide screens - scales with the viewport, capped */
+.top .brand{gap:clamp(12px,1vw,16px)}
+.top .brand svg{width:clamp(26px,2vw,32px);height:auto;aspect-ratio:48/44}
+.top .brand span{font-size:clamp(17px,1.3vw,21px)}
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{position:relative;font-size:15px;font-weight:500;color:var(--ash);transition:color .2s}
 .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--tungsten);transition:right .25s cubic-bezier(.7,0,.2,1)}
