@@ -129,8 +129,10 @@ p{max-width:38em}
 .reel::after{bottom:0;transform-origin:bottom}
 .reel .live{position:absolute;left:18px;top:16px;z-index:3;display:flex;align-items:center;gap:8px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.08em;color:var(--bone);opacity:.9}
 .reel .live i{width:8px;height:8px;border-radius:50%;background:var(--tungsten)}
-.vsound{position:absolute;right:12px;bottom:12px;z-index:5;cursor:pointer;padding:6px 10px;font-stretch:80%;font-weight:600;font-size:12px;letter-spacing:.06em;background:rgba(0,0,0,.55);color:var(--bone);border-radius:2px}
-.reel .sound{position:absolute;right:16px;bottom:14px;z-index:4;cursor:pointer;padding:8px 12px;font-stretch:80%;font-weight:600;font-size:13px;letter-spacing:.06em;background:rgba(0,0,0,.55);color:var(--bone);border-radius:2px}
+.vsound{position:absolute;right:12px;bottom:12px;z-index:5;cursor:pointer;width:34px;height:34px;display:grid;place-items:center;background:rgba(0,0,0,.55);color:var(--bone);border-radius:50%}
+.reel .sound{position:absolute;right:16px;bottom:14px;z-index:4;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;background:rgba(0,0,0,.55);color:var(--bone);border-radius:50%}
+.vsound svg{width:18px;height:18px}
+.reel .sound svg{width:21px;height:21px}
 .reel .reel-cap{position:absolute;left:18px;bottom:14px;z-index:3;max-width:min(70%,520px);display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:rgba(0,0,0,.55);border-radius:2px;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
 .reel .reel-cap.show{opacity:1;transform:translateY(0)}
 .reel .reel-cap b{font-size:16px;font-weight:600}
@@ -515,7 +517,7 @@ section{padding:clamp(64px,7vw,112px) 0}
       <video class="fill" muted playsinline preload="auto"></video>
       <!-- Logo bumper: plays once over the montage on load, then fades to reveal it underneath. -->
       <video id="logoIntro" class="logo-intro" autoplay muted playsinline src="assets/video/as-logo.mp4"></video>
-      <button type="button" class="sound" id="heroSound" aria-pressed="false">SOUND OFF</button>
+      <button type="button" class="sound" id="heroSound" aria-pressed="false" aria-label="Sound off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
   </div>
   <div class="hero-foot">
@@ -863,6 +865,13 @@ section{padding:clamp(64px,7vw,112px) 0}
   // and its logo bumper are still allowed to load eagerly - that's the one deliberate
   // immediate-autoplay moment on the page.
   const CAN_HOVER = window.matchMedia('(hover: hover)').matches;
+  // sound buttons are a speaker icon: sound waves when on, struck through when off
+  function soundIcon(btn,on){
+    btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>'+(on
+      ?'<path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'
+      :'<path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>')+'</svg>';
+    btn.setAttribute('aria-label',on?'Sound on':'Sound off');
+  }
   // section videos (About, Originals, Generate, Augment, Academy) play while hovered and
   // pause when the pointer leaves - unless their sound is on, then they keep going
   if(CAN_HOVER) document.querySelectorAll('video.lazy-ambient').forEach(v=>{
@@ -926,7 +935,7 @@ section{padding:clamp(64px,7vw,112px) 0}
       soundOn=!soundOn;
       applySound();
       if(soundOn) playSafe(introUp?intro:layers[front]);
-      soundBtn.textContent=soundOn?'SOUND ON':'SOUND OFF';
+      soundIcon(soundBtn,soundOn);
       soundBtn.setAttribute('aria-pressed',soundOn);
     });
     // scrolling the hero out of view switches its sound back off
@@ -966,7 +975,7 @@ section{padding:clamp(64px,7vw,112px) 0}
     const btns=[];
     function setBox(btn,v,on){
       v.muted=!on;
-      btn.textContent=on?'SOUND ON':'SOUND OFF';
+      soundIcon(btn,on);
       btn.setAttribute('aria-pressed',on);
     }
     boxes.forEach(box=>{
