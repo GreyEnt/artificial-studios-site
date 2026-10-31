@@ -132,6 +132,18 @@ p{max-width:38em}
 .vsound{position:absolute;right:12px;bottom:12px;z-index:5;cursor:pointer;width:34px;height:34px;display:grid;place-items:center;background:rgba(0,0,0,.55);color:var(--bone);border-radius:50%}
 .reel .sound{position:absolute;right:16px;bottom:14px;z-index:4;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;background:rgba(0,0,0,.55);color:var(--bone);border-radius:50%}
 .vsound svg{width:18px;height:18px}
+.vsound,.reel .sound{z-index:7}
+/* play bar: hidden until the pointer is near the bottom of a video, then drag to scrub */
+.scrub{position:absolute;left:0;right:0;bottom:0;height:64px;z-index:6;display:flex;align-items:flex-end;gap:12px;padding:0 58px 15px 12px;background:linear-gradient(transparent,rgba(0,0,0,.55));opacity:0;transition:opacity .2s ease}
+.reel .scrub{padding:0 68px 20px 16px}
+.scrub:hover,.scrub.dragging{opacity:1}
+@media(hover:none){.scrub{opacity:1;background:none}}
+.scrub-pp{flex:none;width:28px;height:28px;margin-bottom:-8px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.55);color:var(--bone);cursor:pointer}
+.scrub-pp svg{width:12px;height:12px}
+.scrub-track{flex:1;position:relative;height:12px;cursor:pointer;touch-action:none}
+.scrub-track::before{content:"";position:absolute;left:0;right:0;top:4px;height:4px;border-radius:2px;background:rgba(236,232,225,.3)}
+.scrub-fill{position:absolute;left:0;top:4px;height:4px;width:0;border-radius:2px;background:var(--tungsten)}
+.scrub-knob{position:absolute;top:0;left:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--bone)}
 .reel .sound svg{width:21px;height:21px}
 .reel .reel-cap{position:absolute;left:18px;bottom:14px;z-index:3;max-width:min(70%,520px);display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:rgba(0,0,0,.55);border-radius:2px;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
 .reel .reel-cap.show{opacity:1;transform:translateY(0)}
@@ -826,7 +838,7 @@ section{padding:clamp(64px,7vw,112px) 0}
   document.querySelectorAll('.tile .media').forEach(media=>{
     const video = media.querySelector('video');
     if(!video) return;
-    const play = ()=>{ if(!video.paused) return; video.currentTime = 0; video.play().catch(()=>{}); };
+    const play = ()=>{ if(!video.paused) return; video.play().catch(()=>{}); };
     const stop = ()=>{ if(video.muted) video.pause(); };
     media.closest('.tile').addEventListener('mouseenter', play);
     media.closest('.tile').addEventListener('mouseleave', stop);
@@ -865,6 +877,51 @@ section{padding:clamp(64px,7vw,112px) 0}
   // and its logo bumper are still allowed to load eagerly - that's the one deliberate
   // immediate-autoplay moment on the page.
   const CAN_HOVER = window.matchMedia('(hover: hover)').matches;
+  // play bar for a video box: play/pause + a draggable track. getVideo() returns the
+  // video it currently controls (the hero swaps layers); vids are all it may control.
+  function addScrub(box,getVideo,vids){
+    const bar=document.createElement('div'); bar.className='scrub';
+    bar.innerHTML='<button type="button" class="scrub-pp"></button><div class="scrub-track"><div class="scrub-fill"></div><div class="scrub-knob"></div></div>';
+    const pp=bar.firstChild,track=bar.lastChild,fill=track.firstChild,knob=track.lastChild;
+    let dragging=false,resume=false,raf=0;
+    function draw(){
+      const v=getVideo(),f=v.duration?v.currentTime/v.duration:0;
+      fill.style.width=knob.style.left=(f*100)+'%';
+      pp.innerHTML=v.paused?'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>'
+                          :'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor"/></svg>';
+      pp.setAttribute('aria-label',v.paused?'Play':'Pause');
+    }
+    function loop(){ draw(); raf=requestAnimationFrame(loop); }
+    bar.addEventListener('mouseenter',()=>{ if(!raf) loop(); });
+    bar.addEventListener('mouseleave',()=>{ if(!dragging){ cancelAnimationFrame(raf); raf=0; } });
+    vids.forEach(v=>['play','pause','timeupdate'].forEach(e=>v.addEventListener(e,()=>{ if(!raf) draw(); })));
+    function seek(e){
+      const v=getVideo(),r=track.getBoundingClientRect();
+      if(!v.duration) return;
+      v.currentTime=Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*v.duration*.999;
+      draw();
+    }
+    ['click','mousedown'].forEach(t=>bar.addEventListener(t,e=>e.stopPropagation()));
+    pp.addEventListener('click',()=>{ const v=getVideo(); if(v.paused) v.play().catch(()=>{}); else v.pause(); });
+    track.addEventListener('pointerdown',e=>{
+      const v=getVideo();
+      dragging=true; resume=!v.paused; v.pause();
+      track.setPointerCapture(e.pointerId); bar.classList.add('dragging');
+      if(!raf) loop();
+      seek(e);
+    });
+    track.addEventListener('pointermove',e=>{ if(dragging) seek(e); });
+    const end=()=>{
+      if(!dragging) return;
+      dragging=false; bar.classList.remove('dragging');
+      if(resume) getVideo().play().catch(()=>{});
+      if(!bar.matches(':hover')){ cancelAnimationFrame(raf); raf=0; }
+    };
+    track.addEventListener('pointerup',end);
+    track.addEventListener('pointercancel',end);
+    box.appendChild(bar);
+    draw();
+  }
   // sound buttons are a speaker icon: sound waves when on, struck through when off
   function soundIcon(btn,on){
     btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>'+(on
@@ -940,6 +997,7 @@ section{padding:clamp(64px,7vw,112px) 0}
     });
     // scrolling the hero out of view switches its sound back off
     const reelBox=document.querySelector('.reel');
+    if(reelBox) addScrub(reelBox,()=>layers[front],layers);
     if(soundBtn&&reelBox) new IntersectionObserver(es=>{
       if(es[0].intersectionRatio<0.6&&soundOn) soundBtn.click();
     },{threshold:0.6}).observe(reelBox);
@@ -995,6 +1053,7 @@ section{padding:clamp(64px,7vw,112px) 0}
       });
       btns.push({btn,v});
       box.appendChild(btn);
+      addScrub(box,()=>v,[v]);
     });
     // scrolling a box out of view switches its sound back off
     const boxIO=new IntersectionObserver(es=>es.forEach(e=>{
