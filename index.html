@@ -825,7 +825,7 @@ section{padding:clamp(64px,7vw,112px) 0}
     const video = media.querySelector('video');
     if(!video) return;
     const play = ()=>{ if(!video.paused) return; video.currentTime = 0; video.play().catch(()=>{}); };
-    const stop = ()=>{ video.pause(); };
+    const stop = ()=>{ if(video.muted) video.pause(); };
     media.closest('.tile').addEventListener('mouseenter', play);
     media.closest('.tile').addEventListener('mouseleave', stop);
     media.closest('.tile').addEventListener('focusin', play);
@@ -862,6 +862,14 @@ section{padding:clamp(64px,7vw,112px) 0}
   // about to scroll into view, via data-src + IntersectionObserver. Only the hero reel
   // and its logo bumper are still allowed to load eagerly - that's the one deliberate
   // immediate-autoplay moment on the page.
+  const CAN_HOVER = window.matchMedia('(hover: hover)').matches;
+  // section videos (About, Originals, Generate, Augment, Academy) play while hovered and
+  // pause when the pointer leaves - unless their sound is on, then they keep going
+  if(CAN_HOVER) document.querySelectorAll('video.lazy-ambient').forEach(v=>{
+    const box = v.closest('.about-pic, .pillar-media') || v.parentNode;
+    box.addEventListener('mouseenter', ()=>v.play().catch(()=>{}));
+    box.addEventListener('mouseleave', ()=>{ if(v.muted) v.pause(); });
+  });
   (function(){
     const els = document.querySelectorAll('video.lazy-ambient');
     function activate(v){
@@ -869,7 +877,8 @@ section{padding:clamp(64px,7vw,112px) 0}
       if(!src) return;
       v.querySelector('source').src = src;
       v.load();
-      v.play().catch(()=>{});
+      // with a mouse they wait for a hover (below); touch screens have no hover, so play
+      if(!CAN_HOVER) v.play().catch(()=>{});
       delete v.dataset.src;
     }
     if(!('IntersectionObserver' in window)){
@@ -982,7 +991,7 @@ section{padding:clamp(64px,7vw,112px) 0}
     const boxIO=new IntersectionObserver(es=>es.forEach(e=>{
       if(e.intersectionRatio>=0.5) return;
       const o=btns.find(o=>o.btn.parentNode===e.target);
-      if(o&&!o.v.muted) setBox(o.btn,o.v,false);
+      if(o&&!o.v.muted){ setBox(o.btn,o.v,false); if(CAN_HOVER) o.v.pause(); }
     }),{threshold:0.5});
     boxes.forEach(b=>boxIO.observe(b));
     if(heroBtn) heroBtn.addEventListener('click',()=>{
