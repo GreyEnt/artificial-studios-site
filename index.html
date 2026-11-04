@@ -446,13 +446,12 @@ footer .legal{grid-column:1/-1;margin-top:32px;padding-top:18px;border-top:1px s
 .hero-scope{font-weight:700;font-size:16px;color:var(--bone)}
 /* tabs land with the section heading ~40px under the header, not after a screen of empty padding */
 /* 2026-11-04 Generate and Augment each get their own section ("page") */
-.pillar-page{min-height:100svh;display:flex;align-items:center}
-.pillar-page>.wrap{width:100%}
 .pillar-label{font-size:26px!important;letter-spacing:.08em;margin-bottom:16px!important}
 .pillar-page .pillar-copy>p,.pillar-page .pillar li,.pillar-page .pillar .note{font-size:clamp(18px,1.3vw,20px);line-height:1.5}
 .pillar-page .pillar li::before{top:.62em}
 .pillar-page .pillar ul{gap:14px}
-#originals,#about,#generate,#augment,#how-we-work,#academy,#contact{scroll-margin-top:calc(var(--bar) - clamp(72px,9vw,140px) + 40px)}
+#generate,#augment{scroll-margin-top:calc(var(--bar) + 40px)}
+#originals,#about,#capabilities,#how-we-work,#academy,#contact{scroll-margin-top:calc(var(--bar) - clamp(72px,9vw,140px) + 40px)}
 .three-a{scroll-margin-top:calc(var(--bar) - clamp(56px,7vw,110px) + 40px)}
 /* one type + rhythm system for every section below the work grid:
    body-lede = the main paragraph of a section, same size everywhere;
@@ -663,9 +662,10 @@ section{padding:clamp(64px,7vw,112px) 0}
   </div>
 </section>
 
-<section id="generate" class="rule pillar-page">
+<section id="capabilities" class="rule pillar-page">
   <div class="wrap">
-    <div class="pillar reveal">
+    <div class="pillars">
+      <div class="pillar reveal" id="generate">
         <div class="pillar-media"><video class="lazy-ambient" muted loop playsinline poster="assets/img/work/about-reel-25s.jpg" data-src="assets/video/work/about-reel-25s.mp4"><source type="video/mp4"></video></div>
         <div class="pillar-copy">
           <h2 class="sec-label pillar-label">Generate</h2>
@@ -677,19 +677,15 @@ section{padding:clamp(64px,7vw,112px) 0}
             <li>Atmospheric effects, including smoke, fire, weather and water</li>
           </ul>
         </div>
-    </div>
-  </div>
-</section>
-
-<section id="augment" class="rule pillar-page">
-  <div class="wrap">
-    <div class="pillar reveal">
+      </div>
+      <div class="pillar reveal" id="augment">
         <div class="pillar-media"><video class="lazy-ambient" muted loop playsinline poster="assets/img/work/werewolf.jpg" data-src="assets/video/work/werewolf.mp4"><source type="video/mp4"></video></div>
         <div class="pillar-copy">
           <h2 class="sec-label pillar-label">Augment</h2>
           <p><b>Change what's already there.</b> We use targeted AI techniques to extend or alter selected elements of previously photographed material, while preserving the original plate, composition and intent of the shot.</p>
           <p class="note">We're developing controlled, localised workflows that bring new possibilities to existing footage and live-action productions.</p>
         </div>
+      </div>
     </div>
     <div class="pillars-close reveal">
       <b>Generate new material. Augment what's already there.</b>
