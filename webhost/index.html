@@ -432,6 +432,14 @@ footer .legal{grid-column:1/-1;margin-top:32px;padding-top:18px;border-top:1px s
 .hero-foot .lede b{display:block;color:var(--bone);font-weight:600;margin-bottom:6px}
 .hero-foot .cta{justify-content:center}
 .frame{padding-top:clamp(16px,2vw,28px)}
+/* 2026-11-04 page 1: reel shrinks with screen height so the client strip fits on the landing screen */
+.hero{min-height:calc(100svh - 84px)}
+.reel{max-width:min(calc(var(--max) * .75),calc((100svh - 470px) * 16 / 9))!important}
+/* "Discover our approach": lighter weight, no outline */
+.hero-foot .btn{border-color:transparent;font-weight:400;font-size:16px}
+.hero-foot .btn:hover{background:transparent;color:var(--tungsten);box-shadow:none}
+/* scope line bolder and easier to read */
+.hero-scope{font-weight:700;font-size:15px;color:var(--bone)}
 /* tabs land with the section heading ~40px under the header, not after a screen of empty padding */
 #originals,#about,#capabilities,#how-we-work,#academy,#contact{scroll-margin-top:calc(var(--bar) - clamp(72px,9vw,140px) + 40px)}
 .three-a{scroll-margin-top:calc(var(--bar) - clamp(56px,7vw,110px) + 40px)}
