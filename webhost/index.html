@@ -499,6 +499,11 @@ section{padding:clamp(64px,7vw,112px) 0}
 #about .about-sub{margin-top:20px;padding-top:18px}
 #about .about-sub-head .sec-label{margin-bottom:8px}
 #about .about-copy .signoff{margin-top:16px}
+/* Originals: bullet list styled like the Generate pillar */
+#originals .lede b{font-weight:600}
+.orig-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:22px 0 0;padding:0}
+.orig-list li{position:relative;padding-left:18px;font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone)}
+.orig-list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--tungsten);border-radius:50%}
 /* Filmmakers first + signoff sit between the 29px label and 20px body */
 #about .about-sub-head,#about .about-copy .signoff{font-size:23px!important}
 #about .about-sub-head .sec-label{margin-bottom:12px}
@@ -663,7 +668,13 @@ section{padding:clamp(64px,7vw,112px) 0}
     <div class="about-grid">
     <div class="about-pic tile reveal"><video class="lazy-ambient" muted loop playsinline poster="https://greyent.github.io/artificial-studios-site/assets/img/work/sizzle-reel.jpg" data-src="https://greyent.github.io/artificial-studios-site/assets/video/work/sizzle-reel.mp4"><source type="video/mp4"></video><span class="play" aria-hidden="true"></span><button class="tile-open" data-video="https://greyent.github.io/artificial-studios-site/assets/video/work/sizzle-reel.mp4" data-title="Originals" aria-label="Watch the Originals reel"></button></div>
     <div class="about-copy reveal">
-      <p class="lede">We develop original screen content using AI-native production, from short-form storytelling and micro-drama to longer-form episodic stories and ambitious new screen worlds.</p>
+      <p class="lede"><b>From first ideas to finished films.</b> We develop and produce original screen content using AI-native production, combining filmmaking experience with new tools to bring stories, characters and worlds to the screen.</p>
+      <ul class="orig-list">
+        <li>Visual development, previs and proof-of-concept films</li>
+        <li>Teasers, pitch films and pilot episodes</li>
+        <li>Micro-dramas, standalone episodes and series</li>
+        <li>Short films and feature films</li>
+      </ul>
     </div>
     </div>
   </div>
