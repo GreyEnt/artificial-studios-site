@@ -501,6 +501,10 @@ section{padding:clamp(64px,7vw,112px) 0}
 #about .about-copy .signoff{margin-top:18px}
 #about .about-intro{justify-self:center;max-width:46em;margin:18px auto 0;font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone);text-align:center;text-wrap:balance}
 #about .about-copy .about-sub:first-child{margin-top:0;padding-top:0;border-top:0}
+/* full-width divider (same as the section rules) between the About intro and How we work */
+#about{overflow-x:clip}
+#about .sec-head{position:relative;padding-bottom:clamp(32px,3.5vw,52px)}
+#about .sec-head::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;transform:translateX(-50%);border-top:1px solid var(--line)}
 @media(min-width:761px){#about .about-grid{align-items:stretch}#about .about-pic{aspect-ratio:auto;height:100%}}
 /* contact - one centred closing block, like the hero and work intro */
 .contact-card{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:none}
