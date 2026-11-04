@@ -479,6 +479,11 @@ section{padding:clamp(64px,7vw,112px) 0}
 .text-cols .body-lede+.body-lede{color:#C9C5BD}
 /* section labels (Originals, About...) at twice their old 13px */
 .sec-label{font-size:26px;letter-spacing:.08em;margin-bottom:12px}
+/* 2026-11-04 About: How we work label = section label size; Filmmakers first + signoff = section headline size; body = opening paragraph size */
+.about-sub-head .sec-label{font-size:26px!important;letter-spacing:.08em;margin-bottom:12px}
+.about-sub-head{font-size:clamp(21px,1.7vw,27px);font-stretch:112%;line-height:1.02;letter-spacing:-.015em}
+#how-we-work p{font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone)}
+.about-copy .signoff{font-size:clamp(21px,1.7vw,27px)!important;line-height:1.02;letter-spacing:-.015em}
 /* contact - one centred closing block, like the hero and work intro */
 .contact-card{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:none}
 .contact-card .d2{max-width:none}
@@ -608,7 +613,6 @@ section{padding:clamp(64px,7vw,112px) 0}
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="d2"><span class="sec-label">About</span>Human creativity at the centre of the process.</h2>
-      <p>Artificial Studios is a filmmaking studio bringing new AI capabilities into production.</p>
     </div>
     <div class="about-grid flip">
     <div class="about-pic tile reveal"><video class="lazy-ambient" muted loop playsinline poster="assets/img/work/about-reel.jpg" data-src="assets/video/work/about-reel.mp4"><source type="video/mp4"></video><span class="play" aria-hidden="true"></span><button class="tile-open" data-video="assets/video/work/about-reel.mp4" data-title="Artificial Studios - About reel" aria-label="Watch the About reel"></button></div>
