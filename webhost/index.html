@@ -494,6 +494,12 @@ section{padding:clamp(64px,7vw,112px) 0}
 .about-sub-head{font-size:clamp(21px,1.7vw,27px);font-stretch:112%;line-height:1.02;letter-spacing:-.015em}
 #how-we-work p{font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone)}
 .about-copy .signoff{font-size:clamp(21px,1.7vw,27px)!important;line-height:1.02;letter-spacing:-.015em}
+/* 2026-11-04 About: centred headline above, tighter text column so it balances the video */
+#about .sec-head{grid-template-columns:1fr;justify-items:center;text-align:center}
+#about .about-sub{margin-top:20px;padding-top:18px}
+#about .about-sub-head .sec-label{margin-bottom:8px}
+#about .about-copy .signoff{margin-top:18px}
+@media(min-width:761px){#about .about-grid{align-items:stretch}#about .about-pic{aspect-ratio:auto;height:100%}}
 /* contact - one centred closing block, like the hero and work intro */
 .contact-card{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:none}
 .contact-card .d2{max-width:none}
