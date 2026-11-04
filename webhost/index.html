@@ -446,7 +446,7 @@ footer .legal{grid-column:1/-1;margin-top:32px;padding-top:18px;border-top:1px s
 .hero-scope{font-weight:700;font-size:16px;color:var(--bone)}
 /* tabs land with the section heading ~40px under the header, not after a screen of empty padding */
 /* 2026-11-04 Generate and Augment each get their own section ("page") */
-.pillar-label{font-size:26px!important;letter-spacing:.08em;margin-bottom:16px!important}
+.pillar-label{font-size:29px!important;letter-spacing:.08em;margin-bottom:16px!important}
 .pillar-page .pillar-copy>p,.pillar-page .pillar li,.pillar-page .pillar .note{font-size:clamp(18px,1.3vw,20px);line-height:1.5}
 .pillar-page .pillar li::before{top:.62em}
 .pillar-page .pillar ul{gap:14px}
@@ -488,9 +488,9 @@ section{padding:clamp(64px,7vw,112px) 0}
 .text-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
 .text-cols .body-lede+.body-lede{color:#C9C5BD}
 /* section labels (Originals, About...) at twice their old 13px */
-.sec-label{font-size:26px;letter-spacing:.08em;margin-bottom:12px}
+.sec-label{font-size:29px;letter-spacing:.08em;margin-bottom:12px}
 /* 2026-11-04 About: How we work label = section label size; Filmmakers first + signoff = section headline size; body = opening paragraph size */
-.about-sub-head .sec-label{font-size:26px!important;letter-spacing:.08em;margin-bottom:12px}
+.about-sub-head .sec-label{font-size:29px!important;letter-spacing:.08em;margin-bottom:12px}
 .about-sub-head{font-size:clamp(21px,1.7vw,27px);font-stretch:112%;line-height:1.02;letter-spacing:-.015em}
 #how-we-work p{font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone)}
 .about-copy .signoff{font-size:clamp(21px,1.7vw,27px)!important;line-height:1.02;letter-spacing:-.015em}
@@ -499,6 +499,8 @@ section{padding:clamp(64px,7vw,112px) 0}
 #about .about-sub{margin-top:20px;padding-top:18px}
 #about .about-sub-head .sec-label{margin-bottom:8px}
 #about .about-copy .signoff{margin-top:16px}
+/* Filmmakers first + signoff sit between the 29px label and 20px body */
+#about .about-sub-head,#about .about-copy .signoff{font-size:23px!important}
 #about .about-sub-head .sec-label{margin-bottom:12px}
 #about #how-we-work p{margin-top:16px}
 #about .about-intro{justify-self:center;max-width:46em;margin:16px auto 0;font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone);text-align:center;text-wrap:balance}
