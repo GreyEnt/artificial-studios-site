@@ -499,6 +499,11 @@ section{padding:clamp(64px,7vw,112px) 0}
 #about .about-sub{margin-top:20px;padding-top:18px}
 #about .about-sub-head .sec-label{margin-bottom:8px}
 #about .about-copy .signoff{margin-top:16px}
+/* Academy: secondary copy enlarged to the 20px body size */
+#academy .about-copy p,#academy .dots li{font-size:clamp(18px,1.3vw,20px);line-height:1.5;color:var(--bone)}
+#academy .about-copy p.small{color:var(--bone)}
+#academy .dots{gap:12px}
+#academy .dots li::before{top:.62em}
 /* Originals: bullet list styled like the Generate pillar */
 #originals .lede b{font-weight:600}
 .orig-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:22px 0 0;padding:0}
@@ -725,7 +730,6 @@ section{padding:clamp(64px,7vw,112px) 0}
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="d2"><span class="sec-label">Academy</span>Experience meets new imagination.</h2>
-      <p>Practical training for filmmakers exploring the creative possibilities of AI.</p>
     </div>
     <div class="about-grid">
     <div class="about-pic reveal"><video class="lazy-ambient" muted loop playsinline poster="https://greyent.github.io/artificial-studios-site/assets/img/contact-hero.jpg" data-src="https://greyent.github.io/artificial-studios-site/assets/video/ambient/contact-hero.mp4"><source type="video/mp4"></video></div>
