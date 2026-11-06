@@ -521,6 +521,12 @@ section{padding:clamp(64px,7vw,112px) 0}
 #about .sec-head{position:relative;padding-bottom:clamp(24px,2.2vw,32px);margin-bottom:calc(clamp(64px,7vw,112px) + 23px)}
 #about .sec-head::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;transform:translateX(-50%);border-top:1px solid var(--line)}
 @media(min-width:761px){#about .about-grid{align-items:stretch}#about .about-pic{aspect-ratio:auto;height:100%}}
+/* How we work: no video, centred heading, paragraphs side by side */
+#about .about-copy{max-width:1180px;margin:0 auto}
+#about .about-sub-head{text-align:center}
+#about .hww-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);margin-top:clamp(20px,2vw,28px)}
+#about .hww-cols p{margin-top:0!important}
+@media(max-width:760px){#about .hww-cols{grid-template-columns:1fr;gap:16px}}
 /* contact - one centred closing block, like the hero and work intro */
 .contact-card{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:none}
 .contact-card .d2{max-width:none}
@@ -648,15 +654,14 @@ section{padding:clamp(64px,7vw,112px) 0}
 
 <section id="about" class="rule">
   <div class="wrap">
-    <div class="about-grid flip">
-    <div class="about-pic tile reveal"><video class="lazy-ambient" muted loop playsinline poster="https://greyent.github.io/artificial-studios-site/assets/img/work/how-we-work-reel.jpg" data-src="https://greyent.github.io/artificial-studios-site/assets/video/work/how-we-work-reel.mp4"><source type="video/mp4"></video><span class="play" aria-hidden="true"></span><button class="tile-open" data-video="https://greyent.github.io/artificial-studios-site/assets/video/work/how-we-work-reel.mp4" data-title="Artificial Studios - About reel" aria-label="Watch the About reel"></button></div>
     <div class="about-copy reveal">
       <div class="about-sub" id="how-we-work">
         <h3 class="about-sub-head"><span class="sec-label">How we work</span>Filmmaking is the craft. AI is the tool.</h3>
-        <p>We combine hands-on filmmaking experience with a deep understanding of emerging technologies, working with writers, directors, producers and production teams, bringing creative, technical and production knowledge to create new possibilities for the screen.</p>
-        <p>From pre-viz through pre-production, production and post, we adapt our techniques to the needs of each project, helping filmmakers explore new workflows without having to compromise the creative process.</p>
+        <div class="hww-cols">
+          <p>We combine hands-on filmmaking experience with a deep understanding of emerging technologies, working with writers, directors, producers and production teams, bringing creative, technical and production knowledge to create new possibilities for the screen.</p>
+          <p>From pre-viz through pre-production, production and post, we adapt our techniques to the needs of each project, helping filmmakers explore new workflows without having to compromise the creative process.</p>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </section>
