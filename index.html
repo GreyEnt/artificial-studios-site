@@ -1017,15 +1017,16 @@ section{padding:clamp(64px,7vw,112px) 0}
     els.forEach(v=>io.observe(v));
   })();
 
-  // hero: loops the Selected work, Originals and About videos (not Mr James, nor the
-  // Capabilities or Academy backgrounds), each played in full, back to
+  // hero: loops only the videos that are up on the page (Selected work, Originals,
+  // Generate, Augment; not Mr James, nor the Academy background), each played in full, back to
   // back, in a shuffled order that reshuffles every lap. Two stacked layers: the next
   // video buffers on the hidden layer and crossfades in the moment the current one ends.
   const HERO_REELS=[
     'assets/video/work/environments-loop.mp4',
     'assets/video/work/elgar-crowd-test.mp4',
     'assets/video/work/originals-sizzle-061126.mp4',
-    'assets/video/work/how-we-work-reel.mp4'
+    'assets/video/work/generate-reel.mp4',
+    'assets/video/work/werewolf.mp4'
   ];
   (function(){
     const layers=[...document.querySelectorAll('.reel .fill')];
