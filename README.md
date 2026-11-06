@@ -4,7 +4,7 @@ AI-native filmmaking company, Brighton · London.
 
 - **Live site:** https://artificialstudios.co.uk
 - **GitHub Pages copy:** https://greyent.github.io/artificial-studios-site/
-- **Contact:** duncan@artificialstudios.co.uk
+- **Contact:** hello@artificialstudios.co.uk
 
 Static one-page site: one `index.html`, no build step, no framework.
 
