@@ -20,7 +20,7 @@ _Last updated 5 November 2026._
 | Selected work 01 / Micro-drama: Mr James Ep.2 "Ecstasy of Gold" | `mr-james-ep2-half` |
 | Selected work 02 / Generated environments | `environments-loop` |
 | Selected work 03 / Generated people and crowds | `elgar-crowd-test` |
-| Capabilities: Generate | `about-reel-25s` |
+| Capabilities: Generate | `generate-reel` |
 | Capabilities: Augment | `werewolf` |
 | Academy | `ambient/contact-hero` |
 | Contact | Email only |
