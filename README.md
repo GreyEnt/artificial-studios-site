@@ -14,11 +14,11 @@ _Last updated 5 November 2026._
 
 | Section | Video |
 |---|---|
-| Hero showreel | Loops `environments-loop`, `elgar-crowd-test`, `originals-sizzle-061126`, `generate-reel` and `werewolf` (every video on the page except Mr James and the Academy background), in full and shuffled, after the `as-logo` bumper |
+| Hero showreel | Loops `environments-loop-061126`, `elgar-crowd-test`, `originals-sizzle-061126`, `generate-reel` and `werewolf` (every video on the page except Mr James and the Academy background), in full and shuffled, after the `as-logo` bumper |
 | About / How we work | `how-we-work-reel` |
 | Originals | `originals-sizzle-061126` |
 | Selected work 01 / Micro-drama: Mr James Ep.2 "Ecstasy of Gold" | `mr-james-ep2-half` |
-| Selected work 02 / Generated environments | `environments-loop` |
+| Selected work 02 / Generated environments | `environments-loop-061126` |
 | Selected work 03 / Generated people and crowds | `elgar-crowd-test` |
 | Capabilities: Generate | `generate-reel` |
 | Capabilities: Augment | `werewolf` |
